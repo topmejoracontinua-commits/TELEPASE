@@ -143,6 +143,24 @@ footer{font-size:.85rem;color:var(--muted);display:flex;flex-direction:column;ga
   .num{font-size:2.6rem}
 }
 @media (prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
+.proforma{display:flex;flex-direction:column;gap:20px;border-top:3px solid var(--ink);padding-top:32px}
+.pf-grid{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:28px;align-items:start}
+.pf-text{display:flex;flex-direction:column;gap:14px;min-width:0}
+.pf-text ol{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:6px}
+.pf-mock{background:var(--surface);border:1px solid var(--line);border-radius:10px;overflow:hidden;font-size:.9rem;min-width:0}
+.pf-mock .pf-head{padding:14px 16px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
+.pf-mock .pf-head strong{font-family:var(--f-display);font-size:1.3rem}
+.pf-badge{background:var(--ok-soft);color:var(--ok);font-weight:600;font-size:.75rem;letter-spacing:.08em;text-transform:uppercase;padding:3px 10px;border-radius:999px}
+.pf-scroll{overflow-x:auto}
+.pf-mock table{min-width:440px}
+.pf-mock .pf-note td{font-style:italic;background:var(--accent-soft)}
+.pf-mock .pf-note b{color:var(--accent);font-style:normal}
+.pf-hl{background:var(--accent-soft);color:var(--accent);font-weight:600;padding:0 4px;border-radius:3px}
+.pf-opts{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.pf-opts div{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:10px 12px;display:flex;flex-direction:column;gap:4px}
+.pf-opts span{font-size:.85rem;color:var(--muted)}
+@media (max-width:820px){.pf-grid{grid-template-columns:minmax(0,1fr)}}
+@media (max-width:480px){.pf-opts{grid-template-columns:minmax(0,1fr)}}
 </style>
 
 </head><body><div class="wrap">
@@ -160,6 +178,7 @@ footer{font-size:.85rem;color:var(--muted);display:flex;flex-direction:column;ga
     <li><a href="#paso6"><b>6</b>Completar formulario</a></li>
     <li><a href="#paso7"><b>7</b>Aceptar</a></li>
     <li><a href="#entrega"><b>✓</b>Entregar el TAG</a></li>
+    <li><a href="#proforma"><b>$0</b>Proforma</a></li>
   </ol>
 </header>
 
@@ -369,6 +388,52 @@ footer{font-size:.85rem;color:var(--muted);display:flex;flex-direction:column;ga
   <div class="say">
     <q id="script">Antes de usar rutas nacionales, comunicate con Telepeaje Plus y activá tu número de TAG.</q>
     <button type="button" id="copyBtn">Copiar frase</button>
+  </div>
+</section>
+
+<section class="proforma" id="proforma" aria-labelledby="pf-title">
+  <div style="display:flex;flex-direction:column;gap:10px">
+    <span class="eyebrow">Último paso · Sistema de facturación</span>
+    <h2 id="pf-title">Registrá la entrega con una proforma en $0</h2>
+    <p>Cuando terminás, hacé una <strong>proforma</strong> en el sistema para que quede registrado qué TAG se le dio a cada cliente y cómo se entregó.</p>
+  </div>
+  <div class="pf-grid">
+    <div class="pf-text">
+      <ol>
+        <li>Creá una <strong>proforma</strong> a nombre del cliente.</li>
+        <li>Agregá el producto <span class="ui">[Telepase] Telepase</span>, cantidad <strong>1</strong>.</li>
+        <li>Poné el precio en <strong>$0,00</strong>.</li>
+        <li>Debajo del producto, agregá una <strong>nota</strong> con el número de TAG entregado y cómo se entregó.</li>
+        <li>Guardá y confirmá la proforma.</li>
+      </ol>
+      <h3>Cómo escribir la nota</h3>
+      <div class="pf-opts">
+        <div><strong class="mono">TAG N°: 63271570 (EN MANO)</strong><span>Si le diste el TAG al cliente para que lo pegue él</span></div>
+        <div><strong class="mono">TAG N°: 63271570 (COLOCADO)</strong><span>Si lo pegaste vos en el parabrisas</span></div>
+      </div>
+      <div class="tip"><span><strong>Ojo:</strong> el número de la nota tiene que ser el mismo TAG que cargaste en Unipase en el paso 6.</span></div>
+    </div>
+    <figure>
+      <div class="pf-mock" role="img" aria-label="Ejemplo de proforma con el producto Telepase en cero pesos y la nota con el número de TAG">
+        <div class="pf-head">
+          <div style="display:flex;flex-direction:column;gap:2px">
+            <span class="eyebrow">Factura de cliente · Proforma</span>
+            <strong>09022/2026/00140</strong>
+          </div>
+          <span class="pf-badge">Pagado</span>
+        </div>
+        <div class="pf-scroll">
+          <table>
+            <thead><tr><th>Producto</th><th>Cant.</th><th>Precio</th><th>Impuestos</th><th>Subtotal</th></tr></thead>
+            <tbody>
+              <tr><td>[Telepase] Telepase</td><td>1,00</td><td><span class="pf-hl">0,00</span></td><td>IVA No Corresp</td><td>$ 0,00</td></tr>
+              <tr class="pf-note"><td colspan="5"><b>Nota:</b> <span class="pf-hl">TAG N°: 63271570 (EN MANO)</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <figcaption>Así se ve en el sistema: Telepase con precio $0 y, abajo, la nota con el número de TAG y si fue en mano o colocado.</figcaption>
+    </figure>
   </div>
 </section>
 
